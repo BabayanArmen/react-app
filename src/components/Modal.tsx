@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { useEffect, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import './../styles/modal.scss'
 
@@ -9,6 +9,11 @@ export interface ModalProps {
 }
 
 export function Modal({ open, onClose, children }: ModalProps) {
+    
+    useEffect(() => {
+        console.log("open", open);
+    }, [open]);
+
     if (!open) {
         return null
     }
