@@ -1,0 +1,25 @@
+.user-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: none;
+    margin: 0;
+    padding: 0;
+}
+
+.user-item {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background: #eee;
+    width: 250px;
+}
+
+.user-item:hover {
+    background: darkcyan;
+    cursor: pointer;
+}
+
+.user-name {
+    font-weight: bold;
+}
