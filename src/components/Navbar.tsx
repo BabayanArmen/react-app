@@ -19,6 +19,9 @@ export function Navbar() {
                         <NavLink to="notes" className={( { isActive } ) => isActive ? "active" : '' }>Notes</NavLink>
                     </li>
                     <li>
+                        <NavLink to="reducer" className={( { isActive } ) => isActive ? "active" : '' }>UseReducer</NavLink>
+                    </li>
+                    <li>
                         <button className='logout' onClick={() => setOpen(true)}>Logout</button>
                     </li>
                 </ul>

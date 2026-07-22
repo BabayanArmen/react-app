@@ -12,6 +12,7 @@ import { NotFound } from './pages/NotFound'
 import { Profile } from './pages/Profile'
 import { Notes } from './pages/Notes'
 import type { ProfileProps } from './models/profile.props.model'
+import { UseReduserExample } from './pages/UseREducerExample'
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -33,6 +34,7 @@ function App() {
           <Route index element={<Navigate to="profile" replace />}></Route>
           <Route path='profile' element={<Profile {...userData} callback={handleCallback} />}></Route>
           <Route path='notes' element={<Notes/>}></Route>
+          <Route path='reducer' element={<UseReduserExample/>}></Route>
         </Route>
       </Route>
       <Route path='/*' element={<NotFound />}></Route>
