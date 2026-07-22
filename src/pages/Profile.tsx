@@ -10,13 +10,18 @@ export function Profile(props: ProfileProps) {
 
     const [users, setUsers] = useState<Array<User>>([]);
 
+    const [search, setSearch] = useState<string>('');
+
     const debounceChange = useMemo(
         () => 
-            debounce((name: string) => {
-                setState(state => ({
-                    ...state,
-                    name
-                }));
+            // debounce((name: string) => {
+            //     setState(state => ({
+            //         ...state,
+            //         name
+            //     }));
+            // }, 500),
+            debounce((value: string) => {
+                setSearch(value);
             }, 500),
         []
     )
@@ -33,9 +38,21 @@ export function Profile(props: ProfileProps) {
         .catch(e => e)
     }, [])
 
-    useEffect(() => {
-        console.log(users);
-    }, [users]);
+    // useEffect(() => {
+    //     console.log(users);
+    // }, [users]);
+
+    const filteresUsers = useMemo(() => {
+
+        if (search == '' ) {
+            return users;
+        }
+
+        return users.filter(user => {
+            return user.name.toLowerCase().trim().includes(search.toLowerCase().trim())
+        })
+
+    }, [users, search])
 
     useEffect(() => {
         return () => {
@@ -43,17 +60,21 @@ export function Profile(props: ProfileProps) {
         };
     }, [debounceChange]);
 
+    // useEffect(() => {
+    //     console.log(state.name);
+    // }, [state.name])
+
     return (
         <>
             <h2>Profile page</h2>
             <span>{state.name}</span>
             <span>{state.age}</span>
-            <input type="text" onChange={(e: any) => debounceChange(e.target.value)} />
+            <input type="text" placeholder="Search" onChange={(e: any) => debounceChange(e.target.value)} />
 
             {
                 users.length > 0 && (
                     <ul className="user-list">
-                        {users.map((user: User) => (
+                        {(filteresUsers ?? users).map((user: User) => (
                             <li className="user-item" key={user.id}>
                                 <span className="user-name">{user.name}</span>
                                 <span className="user-email">{user.email}</span>
