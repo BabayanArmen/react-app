@@ -1,6 +1,9 @@
-import { useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { Note } from "../components/Note";
 import { Modal } from "../components/Modal";
+import { AppContext } from "../App";
+import { Sender } from "./Sender";
+import { Reciever } from "./Reciever";
 
 export function Notes() {
     const [note, setNote] = useState({title: "New title", body: "some text here"});
@@ -12,11 +15,32 @@ export function Notes() {
         }))
     }
 
-    const [ open, setOpen] = useState<boolean>(false)
+    const [ open, setOpen] = useState<boolean>(false);
+
+    const titleRef = useRef<HTMLInputElement>(null);
+
+    const counter = useRef(0);
+
+    const changeTitleColor = () => {
+        if (titleRef.current) {
+            titleRef.current.style.color = 'green';
+        }
+
+        console.log(counter.current);
+
+        counter.current++;
+    }
+
+    const appContext = useContext(AppContext);
+
+    console.log(appContext.data);
+    
 
     return (
         <>
-            <h2>Notes</h2>
+            <h2 ref={titleRef}>Notes</h2>
+
+            <button onClick={changeTitleColor}>Change title color</button>
 
             <ul>
                 <li>
@@ -40,6 +64,9 @@ export function Notes() {
                     I am rendered outside root
                 </p>
             </Modal>
+
+            <Sender/>
+            <Reciever />
         </>
     )
 }

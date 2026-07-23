@@ -1,9 +1,10 @@
-import { useEffect, useMemo, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import type { ProfileProps } from "../models/profile.props.model";
 import { debounce } from "lodash";
 import { getRequest } from "../services/http.service";
 import type { User } from "../models/user/user.model";
 import '../styles/profile.scss';
+import { AppContext } from "../App";
 
 export function Profile(props: ProfileProps) {
     const [state, setState] = useState<ProfileProps>(props);
@@ -29,6 +30,10 @@ export function Profile(props: ProfileProps) {
     const sendMessage = (message: string) => {
         props.callback(message);
     };
+
+    const appContext = useContext(AppContext);
+
+    appContext.data = { name: "John Doe" };
 
     useEffect(() => {
         getRequest('https://jsonplaceholder.typicode.com/users', null)
