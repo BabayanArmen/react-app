@@ -1,4 +1,4 @@
-import { useCallback, useContext, useRef, useState } from "react";
+import { useCallback, useContext, useMemo, useRef, useState } from "react";
 import { Note } from "../components/Note";
 import { Modal } from "../components/Modal";
 import { AppContext } from "../App";
@@ -23,6 +23,13 @@ export function Notes() {
     const counter = useRef(0);
 
     const [isPlaying, setIsPlaying] = useState<boolean>(false);
+
+    const videoData = useMemo(() => {
+        return {
+            url: 'https://www.w3schools.com/html/mov_bbb.mp4',
+            title: 'Bunny Movie'
+        }
+    }, [])
 
     const onPlay = useCallback(() => {setIsPlaying(true)}, [])
     const onPause = useCallback(() => {setIsPlaying(false)}, [])
@@ -78,7 +85,7 @@ export function Notes() {
             <span>{isPlaying ? 'is playing' : 'on pauses'}</span>
             
             <VideoPlayer 
-                src='https://www.w3schools.com/html/mov_bbb.mp4'
+                src={videoData}
                 onPlay={onPlay}
                 onPause={onPause}
             />
