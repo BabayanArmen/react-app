@@ -12,10 +12,22 @@ import { NotFound } from './pages/NotFound'
 import { Profile } from './pages/Profile'
 import { Notes } from './pages/Notes'
 import type { ProfileProps } from './models/profile.props.model'
-import { UseReduserExample } from './pages/UseREducerExample'
+import { UseReduserExample } from './pages/UseReducerExample'
+import React, { useState } from 'react'
+import type { AppContextModel } from './models/app.context.model'
+
+const appContextValue: AppContextModel = {} as AppContextModel;
+
+export const AppContext = React.createContext<AppContextModel>(appContextValue);
 
 function App() {
   // const [count, setCount] = useState(0)
+
+  const [data, setData] = useState(null);
+
+  appContextValue.data = data;
+  appContextValue.setData = setData;
+
 
   const userData: ProfileProps = {
     name: "John Smith",
@@ -27,6 +39,7 @@ function App() {
   };
 
   return (
+    <AppContext.Provider value={appContextValue}>
     <Routes>
       <Route path='/' element={<Login />}></Route>
       <Route element={<ProtectedRoutes/>}>
@@ -39,6 +52,7 @@ function App() {
       </Route>
       <Route path='/*' element={<NotFound />}></Route>
     </Routes>
+    </AppContext.Provider>
   )
 }
 
