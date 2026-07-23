@@ -1,9 +1,10 @@
-import { useContext, useRef, useState } from "react";
+import { useCallback, useContext, useRef, useState } from "react";
 import { Note } from "../components/Note";
 import { Modal } from "../components/Modal";
 import { AppContext } from "../App";
 import { Sender } from "./Sender";
 import { Reciever } from "./Reciever";
+import VideoPlayer from "./VideoPlayer";
 
 export function Notes() {
     const [note, setNote] = useState({title: "New title", body: "some text here"});
@@ -21,6 +22,11 @@ export function Notes() {
 
     const counter = useRef(0);
 
+    const [isPlaying, setIsPlaying] = useState<boolean>(false);
+
+    const onPlay = useCallback(() => {setIsPlaying(true)}, [])
+    const onPause = useCallback(() => {setIsPlaying(false)}, [])
+
     const changeTitleColor = () => {
         if (titleRef.current) {
             titleRef.current.style.color = 'green';
@@ -34,7 +40,6 @@ export function Notes() {
     const appContext = useContext(AppContext);
 
     console.log(appContext.data);
-    
 
     return (
         <>
@@ -67,6 +72,16 @@ export function Notes() {
 
             <Sender/>
             <Reciever />
+
+            <hr />
+
+            <span>{isPlaying ? 'is playing' : 'on pauses'}</span>
+            
+            <VideoPlayer 
+                src='https://www.w3schools.com/html/mov_bbb.mp4'
+                onPlay={onPlay}
+                onPause={onPause}
+            />
         </>
     )
 }

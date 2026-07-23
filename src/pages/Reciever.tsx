@@ -11,7 +11,7 @@ export function Reciever() {
     return (
         <div style={{ border: '1px solid green', padding: '15px' }}>
             <h3>Recieve Event</h3>
-            <span>{appContext?.data.info}</span>
+            <span>{appContext?.data?.info}</span>
         </div>
     )
 }
