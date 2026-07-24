@@ -5,6 +5,10 @@ import { AppContext } from "../App";
 import { Sender } from "./Sender";
 import { Reciever } from "./Reciever";
 import VideoPlayer from "./VideoPlayer";
+import { useDispatch, useSelector } from "react-redux";
+import { setUserName, setUserNameAsync } from "../features/user/userSlice";
+import type { AppDispatch, RootState } from "../app/store";
+import { debounce } from "lodash";
 
 export function Notes() {
     const [note, setNote] = useState({title: "New title", body: "some text here"});
@@ -23,6 +27,16 @@ export function Notes() {
     const counter = useRef(0);
 
     const [isPlaying, setIsPlaying] = useState<boolean>(false);
+
+    ///////////// redux ///////////////////////////////////////////
+    const user = useSelector((state: RootState) => {
+        if (state.user) {
+            return state.user.currentUser;
+        }
+    })
+
+    const dispatch = useDispatch<AppDispatch>();
+    ///////////////////////////////////////////////////////////////
 
     const videoData = useMemo(() => {
         return {
@@ -47,6 +61,16 @@ export function Notes() {
     const appContext = useContext(AppContext);
 
     console.log(appContext.data);
+
+    const debounceChange = useMemo(
+        () => 
+            debounce((value: string) => {
+                dispatch(setUserNameAsync(value));
+                console.log(value);
+                
+            }, 500),
+        []
+    )
 
     return (
         <>
@@ -89,6 +113,15 @@ export function Notes() {
                 onPlay={onPlay}
                 onPause={onPause}
             />
+
+            <hr style={{border: "4px solid grey"}} />
+
+            <p>Redux</p>
+
+            <p>{user?.name}</p>
+
+            <input type="text" value={user?.name ?? ""} onChange={(evn) => dispatch(setUserName(evn.target.value))} />
+            <input type="text" placeholder="set user name async" onChange={(evn) => debounceChange(evn.target.value)} />
         </>
     )
 }

@@ -65,10 +65,10 @@ export function UseReduserExample() {
 
     return (
         <>
-        <div>
-            <input type="text" value={text} onChange={(event: any) => setText(event.target.value)}  />
-            <button onClick={() => addItem()}>Add</button>
-        </div>
+            <div>
+                <input type="text" value={text} onChange={(event: any) => setText(event.target.value)}  />
+                <button onClick={() => addItem()}>Add</button>
+            </div>
             <ul>
                 {state.items.map((item, index) => (
                     <li key={index}>

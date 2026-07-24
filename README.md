@@ -78,4 +78,6 @@ export default defineConfig([
 ## npm install lodash
 ## npm install -D @types/lodash 
 ## npm install axios
-## npm install sass 
+## npm install sass
+## npm install @reduxjs/toolkit react-redux
+## npm install @reduxjs/toolkit react-redux --template redux
