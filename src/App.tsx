@@ -2,45 +2,51 @@
 // import reactLogo from './assets/react.svg'
 // import viteLogo from './assets/vite.svg'
 // import heroImg from './assets/hero.png'
-import { Navigate, Route, Routes } from 'react-router-dom'
+import { Outlet, useNavigation } from 'react-router-dom'
 import './App.scss'
 // import { Header } from './pages/Header'
-import { Login } from './pages/Login'
-import { Home } from './pages/Home'
-import ProtectedRoutes from './utils/ProptectedRoutes'
-import { NotFound } from './pages/NotFound'
-import { Profile } from './pages/Profile'
-import { Notes } from './pages/Notes'
-import type { ProfileProps } from './models/profile.props.model'
-import { UseReduserExample } from './pages/UseReducerExample'
+// import { Login } from './pages/Login'
+// import { Home } from './pages/Home'
+// import ProtectedRoutes from './utils/ProptectedRoutes'
+// import { NotFound } from './pages/NotFound'
+// import { Profile } from './pages/Profile'
+// import { Notes } from './pages/Notes'
+// import type { ProfileProps } from './models/profile.props.model'
+// import { UseReduserExample } from './pages/UseReducerExample'
 import React, { useState } from 'react'
 import type { AppContextModel } from './models/app.context.model'
 
-const appContextValue: AppContextModel = {} as AppContextModel;
-
-export const AppContext = React.createContext<AppContextModel>(appContextValue);
+//// this is for useContext
+export const AppContext = React.createContext<AppContextModel | null>(null);
 
 function App() {
   // const [count, setCount] = useState(0)
 
-  const [data, setData] = useState(null);
+  // const [data, setData] = useState(null);
 
-  appContextValue.data = data;
-  appContextValue.setData = setData;
+  // appContextValue.data = data;
+  // appContextValue.setData = setData;
+
+  const [message, setMessage] = useState<string | null>(null);
+
+  // const navigation = useNavigation();
 
 
-  const userData: ProfileProps = {
-    name: "John Smith",
-    age: 25
-  }
+  // const userData: ProfileProps = {
+  //   name: "John Smith",
+  //   age: 25
+  // }
 
-  const handleCallback = (message: string) => {
-      console.log("Message from child:", message);
-  };
+  // const handleCallback = (message: string) => {
+  //     console.log("Message from child:", message);
+  // };
 
   return (
-    <AppContext.Provider value={appContextValue}>
-    <Routes>
+    <AppContext.Provider value={{
+      message,
+      setMessage
+    }}>
+    {/* <Routes>
       <Route path='/' element={<Login />}></Route>
       <Route element={<ProtectedRoutes/>}>
         <Route path='/home' element={<Home />}>
@@ -51,7 +57,17 @@ function App() {
         </Route>
       </Route>
       <Route path='/*' element={<NotFound />}></Route>
-    </Routes>
+    </Routes> */}
+
+      {/* this is for router loader, when fetching data before navigate */}
+      {/* {
+        navigation.state === "loading" &&
+        <div>
+            Loading...
+        </div>
+      } */}
+
+      <Outlet />
     </AppContext.Provider>
   )
 }

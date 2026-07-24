@@ -22,6 +22,9 @@ export function Navbar() {
                         <NavLink to="reducer" className={( { isActive } ) => isActive ? "active" : '' }>UseReducer</NavLink>
                     </li>
                     <li>
+                        <NavLink to="users" className={( { isActive } ) => isActive ? "active" : '' }>Users</NavLink>
+                    </li>
+                    <li>
                         <button className='logout' onClick={() => setOpen(true)}>Logout</button>
                     </li>
                 </ul>

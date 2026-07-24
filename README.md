@@ -81,3 +81,53 @@ export default defineConfig([
 ## npm install sass
 ## npm install @reduxjs/toolkit react-redux
 ## npm install @reduxjs/toolkit react-redux --template redux
+
+<!--
+//// DONE ////
+components
+porps
+callbacks as props
+data binding
+list rendering
+conditional rendering
+hooks
+router / lazy, loader, dynamic route
+using navigate in js/ts
+state / redux
+React.memo
+useCallback
+useMemo
+createPortal for modals
+loadash-debounce
+local search
+userReducer
+useContex / React.createContext, to share some data, messages, and somthing like eventEmiiter
+
+useState +
+useEffect +
+useRef +
+useMemo +
+useCallback +
+useContext +
+useReducer +
+useParams() — read route parameters.
+ -->
+
+<!-- 
+//// TODO ////
+
+TanStack Query (React Query)
+
+Controlled inputs
+Uncontrolled inputs
+React Query
+Custom hooks
+Forms / Zod / Schema validation
+React rendering model
+
+useSearchParams() — read and update query string parameters.
+useLocation()
+Container vs Presentational components
+
+Server State Management
+-->

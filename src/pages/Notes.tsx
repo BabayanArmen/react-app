@@ -1,7 +1,6 @@
-import { useCallback, useContext, useMemo, useRef, useState } from "react";
+import { useCallback, useMemo, useRef, useState } from "react";
 import { Note } from "../components/Note";
 import { Modal } from "../components/Modal";
-import { AppContext } from "../App";
 import { Sender } from "./Sender";
 import { Reciever } from "./Reciever";
 import VideoPlayer from "./VideoPlayer";
@@ -38,6 +37,7 @@ export function Notes() {
     const dispatch = useDispatch<AppDispatch>();
     ///////////////////////////////////////////////////////////////
 
+    /////// for memo ... //////
     const videoData = useMemo(() => {
         return {
             url: 'https://www.w3schools.com/html/mov_bbb.mp4',
@@ -47,6 +47,7 @@ export function Notes() {
 
     const onPlay = useCallback(() => {setIsPlaying(true)}, [])
     const onPause = useCallback(() => {setIsPlaying(false)}, [])
+    ///////////////////////////
 
     const changeTitleColor = () => {
         if (titleRef.current) {
@@ -57,10 +58,6 @@ export function Notes() {
 
         counter.current++;
     }
-
-    const appContext = useContext(AppContext);
-
-    console.log(appContext.data);
 
     const debounceChange = useMemo(
         () => 

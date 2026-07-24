@@ -1,13 +1,13 @@
 import { useContext, useEffect, useMemo, useState } from "react";
-import type { ProfileProps } from "../models/profile.props.model";
+// import type { ProfileProps } from "../models/profile.props.model";
 import { debounce } from "lodash";
 import { getRequest } from "../services/http.service";
 import type { User } from "../models/user/user.model";
 import '../styles/profile.scss';
 import { AppContext } from "../App";
 
-export function Profile(props: ProfileProps) {
-    const [state, setState] = useState<ProfileProps>(props);
+export function Profile() {
+    // const [state, setState] = useState<ProfileProps>(props);
 
     const [users, setUsers] = useState<Array<User>>([]);
 
@@ -27,13 +27,13 @@ export function Profile(props: ProfileProps) {
         []
     )
 
-    const sendMessage = (message: string) => {
-        props.callback(message);
-    };
+    // const sendMessage = (message: string) => {
+    //     // props.callback(message);
+    // };
 
-    const appContext = useContext(AppContext);
+    // const appContext = useContext(AppContext);
 
-    appContext.data = { name: "John Doe" };
+    // appContext.message = "John Doe" ;
 
     useEffect(() => {
         getRequest('https://jsonplaceholder.typicode.com/users', null)
@@ -72,8 +72,8 @@ export function Profile(props: ProfileProps) {
     return (
         <>
             <h2>Profile page</h2>
-            <span>{state.name}</span>
-            <span>{state.age}</span>
+            {/* <span>{state.name}</span>
+            <span>{state.age}</span> */}
             <input type="text" placeholder="Search" onChange={(e: any) => debounceChange(e.target.value)} />
 
             {
@@ -89,7 +89,7 @@ export function Profile(props: ProfileProps) {
                 )
             }
 
-            <button onClick={() => sendMessage("Hello from profile")}>Callback</button>
+            {/* <button onClick={() => sendMessage("Hello from profile")}>Callback</button> */}
         </>
     )
 }

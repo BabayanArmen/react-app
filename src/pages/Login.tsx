@@ -6,7 +6,7 @@ export function Login() {
     const [userName, setUserName] = useState("");
     const [password, setPassword] = useState("");
 
-    const navigare = useNavigate();
+    const navigate = useNavigate();
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -14,7 +14,7 @@ export function Login() {
         // Call your API here
         // login(userName, password);
 
-        navigare("home");
+        navigate("home");
     };
 
     const userIsAuthenticated:boolean = false;

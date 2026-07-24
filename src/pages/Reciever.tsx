@@ -5,13 +5,13 @@ export function Reciever() {
     const appContext = useContext(AppContext);    
 
     useEffect(() => {
-        console.log(appContext.data);
-    }, [appContext.data])
+        console.log(appContext?.message);
+    }, [appContext?.message])
 
     return (
         <div style={{ border: '1px solid green', padding: '15px' }}>
             <h3>Recieve Event</h3>
-            <span>{appContext?.data?.info}</span>
+            <span>{appContext?.message}</span>
         </div>
     )
 }
