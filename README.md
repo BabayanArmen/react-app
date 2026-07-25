@@ -111,6 +111,7 @@ useCallback +
 useContext +
 useReducer +
 useParams() — read route parameters.
+useSearchParams() — read and update query string parameters.
  -->
 
 <!-- 
@@ -125,7 +126,7 @@ Custom hooks
 Forms / Zod / Schema validation
 React rendering model
 
-useSearchParams() — read and update query string parameters.
+
 useLocation()
 Container vs Presentational components
 

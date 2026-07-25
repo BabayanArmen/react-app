@@ -4,8 +4,28 @@ import { useNavigate, useParams, useSearchParams } from "react-router-dom"
 export function UserDetails() {
     const { id, name } = useParams();
 
-    // const querryParams = useSearchParams();
+    const [searchParams, setSearchParams] = useSearchParams();
 
+    // const params = Object.fromEntries(searchParams.entries());
+    // console.log(params);
+
+    // let querries: Record<string, string> = {};
+    // searchParams.forEach((value, key) => {
+    //     querries[key] = value
+    // })
+
+    console.log(searchParams.get("a"));
+
+    function changeQuery() {
+
+        setSearchParams({
+            search: "john",
+            page: "2",
+            sort: "name"
+        });
+
+    }
+    
     const [loading, setLoading] = useState<boolean>(false);
 
     const [user, setUser] = useState<any>(null);
@@ -51,6 +71,7 @@ export function UserDetails() {
                     <p>{user.email}</p>
                 </div>
             )}
+            <button onClick={changeQuery}>Set Querries</button>
         </>
 
 
