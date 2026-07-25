@@ -17,9 +17,10 @@ export function Component() {
 
     async function loadData() {
         setLoading(true);
-        const res = await (await fetch("https://jsonplaceholder.typicode.com/users")).json();
-        if (res) {
-            setUsers(res); 
+        const res = await fetch("https://jsonplaceholder.typicode.com/users");
+        const usersData = await res.json();
+        if (usersData) {
+            setUsers(usersData); 
         }
         setLoading(false);
     }

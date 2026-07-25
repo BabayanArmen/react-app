@@ -13,6 +13,7 @@ import { Profile } from './pages/Profile.tsx'
 import { UseReduserExample } from './pages/UseReducerExample.tsx'
 import ProtectedRoutes from './utils/ProptectedRoutes.tsx'
 import { UserDetails } from './pages/UserDetails.tsx'
+import { FilterExampleWithTable } from './pages/FilterExampleWithTable.tsx'
 
 const router = createBrowserRouter([
   { 
@@ -38,7 +39,8 @@ const router = createBrowserRouter([
                 //   return (await fetch("https://jsonplaceholder.typicode.com/users")).json();
                 // }
               },
-              { path: "users/:id/:name?", element: <UserDetails/> }
+              { path: "users/:id/:name?", element: <UserDetails/> },
+              { path: "FilterExampleWithTable", element: <FilterExampleWithTable/> }
             ] 
           }
         ]
