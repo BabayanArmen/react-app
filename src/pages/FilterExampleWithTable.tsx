@@ -1,18 +1,22 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import '../styles/FilterExampleWithTable.scss';
+import { Drawer } from "../components/Drawer";
+import { Modal } from "../components/Modal";
 
 export function FilterExampleWithTable() {
+    const [drawerOpen, setDrawerOpen] = useState(false);
     
     const [form, setForm] = useState<any>({
         name: "",
         email: ""
     });
 
-    function handleChange(e: React.ChangeEvent<HTMLInputElement>) {        
+    function handleChange(e: React.ChangeEvent<HTMLInputElement>) {   
+        const { name, value } = e.target;     
         setForm({
             ...form,
-            [e.target.name]: e.target.value.trim()
+            [name]: value.trim()
         })
     }
     
@@ -52,7 +56,36 @@ export function FilterExampleWithTable() {
 
     return (
         <>
-            <form onSubmit={submit}>
+            <button onClick={() => setDrawerOpen(true)}>Open Filters</button>
+            <Drawer open={drawerOpen} onClose={() => setDrawerOpen(false)}>
+                <form onSubmit={submit} style={{ padding: 0, boxShadow: "none" }}>
+                    <div>
+                        <label>Name</label>
+                        <input type="text" name="name" value={form.name ?? ""} onChange={handleChange} />
+                    </div>
+                    <div>
+                        <label>Email</label>
+                        <input type="email" name="email" value={form.email ?? ""} onChange={handleChange} />
+                    </div>
+                    <button type="submit">Search</button>
+                </form>
+            </Drawer>
+
+            {/* <Modal open={drawerOpen} onClose={() => setDrawerOpen(false)}>
+                <form onSubmit={submit}>
+                    <div>
+                        <label>Name</label>
+                        <input type="text" name="name" value={form.name ?? ""} onChange={handleChange} />
+                    </div>
+                    <div>
+                        <label>Email</label>
+                        <input type="email" name="email" value={form.email ?? ""} onChange={handleChange} />
+                    </div>
+                    <button type="submit">Search</button>
+                </form>
+            </Modal> */}
+
+            {/* <form onSubmit={submit}>
                 <div>
                     <label>Name</label>
                     <input type="text" name="name" value={form.name ?? ""} onChange={handleChange} />
@@ -62,7 +95,7 @@ export function FilterExampleWithTable() {
                     <input type="email" name="email" value={form.email ?? ""} onChange={handleChange} />
                 </div>
                 <button type="submit">Search</button>
-            </form>
+            </form> */}
 
             <span>{loading && 'Loading...'}</span>
 
@@ -93,7 +126,7 @@ export function FilterExampleWithTable() {
                         })}
                     </tbody>
                 </table>
-            )}    
+            )}
         </>
     )
 
