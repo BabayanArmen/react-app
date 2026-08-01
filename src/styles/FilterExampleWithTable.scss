@@ -20,3 +20,27 @@ th {
   background-color: #04AA6D;
   color: white;
 }
+
+.filter_container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.filter_items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.filter_buttons {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  button {
+    flex: 1;
+  }
+}

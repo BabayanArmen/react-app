@@ -1,6 +1,6 @@
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { createPortal } from "react-dom";
-import './../styles/modal.scss'
+import style from "../styles/modal.module.scss";
 
 export interface ModalProps {
     open: boolean;
@@ -9,20 +9,30 @@ export interface ModalProps {
 }
 
 export function Modal({ open, onClose, children }: ModalProps) {
+    const [visible, setVisible] = useState(open);
     
     useEffect(() => {
-        console.log("open", open);
+        if (open) {
+            setVisible(true);
+        }
     }, [open]);
 
-    if (!open) {
-        return null
-    }
+    const handleAnimationEnd = () => {
+        if (!open) {
+            setVisible(false);
+        }
+    };
+
+    if (!visible) return null;
 
     return createPortal(
-        <div className="overlay" onClick={onClose}>
-            <div className="modal" onClick={e => e.stopPropagation()}>
+        <div className={`${style.overlay} ${ !open ? style.close : ''}`} onClick={onClose}>
+            <div 
+                className={`${style.modal} ${ !open ? style.close : ''}`} 
+                onAnimationEnd={handleAnimationEnd} 
+                onClick={e => e.stopPropagation()}
+            >
                 {children}
-                <button onClick={onClose}>Close</button>
             </div>
         </div>,
         document.getElementById('modal-root')!

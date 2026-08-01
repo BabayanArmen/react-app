@@ -81,6 +81,7 @@ export default defineConfig([
 ## npm install sass
 ## npm install @reduxjs/toolkit react-redux
 ## npm install @reduxjs/toolkit react-redux --template redux
+## npm install react-hook-form
 
 <!--
 //// DONE ////

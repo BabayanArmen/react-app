@@ -1,0 +1,50 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #07171d9a;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    animation: fadeIn .3s ease forwards;
+}
+.overlay.close {
+    animation: fadeOut .3s ease forwards;
+}
+
+.modal {
+    background-color: rgb(234, 234, 234);
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    animation: fadeIn .3s ease forwards;
+}
+.modal.close {
+    animation: fadeOut .3s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        backdrop-filter: blur(0px);
+    }
+    to {
+        opacity: 1;
+        backdrop-filter: blur(8px);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        backdrop-filter: blur(8px);
+    }
+    to {
+        opacity: 0;
+        backdrop-filter: blur(0px);
+    }
+}

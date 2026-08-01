@@ -1,6 +1,6 @@
-import { type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { createPortal } from "react-dom";
-import '../styles/Drawer.scss';
+import style from '../styles/Drawer.module.scss';
 
 export interface SideBarModalProps {
     open: boolean,
@@ -9,13 +9,26 @@ export interface SideBarModalProps {
 }
 
 export function Drawer({open, onClose, children} : SideBarModalProps) {
+    const [visible, setVisible] = useState(open);
+    
+    useEffect(() => {
+        if (open) {
+            setVisible(true);
+        }
+    }, [open]);
 
-    if (!open) return;
+    const handleAnimationEnd = () => {
+        if (!open) {
+            setVisible(false);
+        }
+    };
+
+    if (!visible) return null;
     
     return createPortal(
         <>
-            <div className="drawer_overlay" onClick={onClose}></div>
-            <div className="drawer">{children}</div>
+            <div className={`${style.drawer_overlay} ${ !open ? style.close : '' }`} onClick={onClose}></div>
+            <div className={`${style.drawer} ${ !open ? style.close : '' }`} onAnimationEnd={handleAnimationEnd}>{children}</div>
         </>,
         document.getElementById("modal-root")!
     )

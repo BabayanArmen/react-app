@@ -14,6 +14,7 @@ import { UseReduserExample } from './pages/UseReducerExample.tsx'
 import ProtectedRoutes from './utils/ProptectedRoutes.tsx'
 import { UserDetails } from './pages/UserDetails.tsx'
 import { FilterExampleWithTable } from './pages/FilterExampleWithTable.tsx'
+import { ReactHookForm } from './pages/ReactHookForm.tsx'
 
 const router = createBrowserRouter([
   { 
@@ -40,7 +41,8 @@ const router = createBrowserRouter([
                 // }
               },
               { path: "users/:id/:name?", element: <UserDetails/> },
-              { path: "FilterExampleWithTable", element: <FilterExampleWithTable/> }
+              { path: "filterExampleWithTable", element: <FilterExampleWithTable/> },
+              { path: "react-hook-form", element: <ReactHookForm/> }
             ] 
           }
         ]

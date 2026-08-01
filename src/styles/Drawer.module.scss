@@ -1,0 +1,65 @@
+.drawer {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 320px;
+    background: white;
+    box-shadow: -2px 0 10px rgba(0,0,0,.2);
+    transform: translateX(100%);
+    animation: slideIn .3s ease forwards;
+}
+.drawer.close {
+    animation: slideOut .3s ease forwards;
+}
+
+.drawer_overlay {
+    position: fixed;
+    inset: 0;
+    // background-color: rgba(51, 51, 51, 0.226);
+    background-color: #07171d9a;
+    animation: fadeIn .3s ease forwards;
+}
+.drawer_overlay.close {
+    animation: fadeOut .3s ease forwards;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        backdrop-filter: blur(0px);
+    }
+    to {
+        opacity: 1;
+        backdrop-filter: blur(8px);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        backdrop-filter: blur(8px);
+    }
+    to {
+        opacity: 0;
+        backdrop-filter: blur(0px);
+    }
+}

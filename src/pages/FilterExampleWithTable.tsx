@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import '../styles/FilterExampleWithTable.scss';
 import { Drawer } from "../components/Drawer";
-import { Modal } from "../components/Modal";
+// import { Modal } from "../components/Modal";
 
 export function FilterExampleWithTable() {
     const [drawerOpen, setDrawerOpen] = useState(false);
@@ -20,8 +20,21 @@ export function FilterExampleWithTable() {
         })
     }
     
-    function submit(e: React.FormEvent<HTMLFormElement>) {
-        e.preventDefault();
+    function onSearch() {
+        applyQuerries(form);
+        setDrawerOpen(false);
+    }
+
+    function reset() {
+        setForm({
+            name: "",
+            email: ""
+        });
+        applyQuerries();
+        setDrawerOpen(false);
+    }
+
+    function applyQuerries(form: any = {}) {
         const filter: Record<string, string> = Object.fromEntries(
             Object.entries(form)
                 .filter(([_, value]) => (value !== null && value !== ""))
@@ -57,22 +70,28 @@ export function FilterExampleWithTable() {
     return (
         <>
             <button onClick={() => setDrawerOpen(true)}>Open Filters</button>
+
             <Drawer open={drawerOpen} onClose={() => setDrawerOpen(false)}>
-                <form onSubmit={submit} style={{ padding: 0, boxShadow: "none" }}>
-                    <div>
-                        <label>Name</label>
-                        <input type="text" name="name" value={form.name ?? ""} onChange={handleChange} />
+                <div className="filter_container">
+                    <div className="filter_items">
+                        <div>
+                            <label>Name</label>
+                            <input type="text" name="name" value={form.name ?? ""} onChange={handleChange} />
+                        </div>
+                        <div>
+                            <label>Email</label>
+                            <input type="email" name="email" value={form.email ?? ""} onChange={handleChange} />
+                        </div>
                     </div>
-                    <div>
-                        <label>Email</label>
-                        <input type="email" name="email" value={form.email ?? ""} onChange={handleChange} />
+                    <div className="filter_buttons">
+                        <button onClick={onSearch}>Search</button>
+                        <button onClick={() => reset()}>Reset</button>
                     </div>
-                    <button type="submit">Search</button>
-                </form>
+                </div>
             </Drawer>
 
             {/* <Modal open={drawerOpen} onClose={() => setDrawerOpen(false)}>
-                <form onSubmit={submit}>
+                <div>
                     <div>
                         <label>Name</label>
                         <input type="text" name="name" value={form.name ?? ""} onChange={handleChange} />
@@ -81,21 +100,10 @@ export function FilterExampleWithTable() {
                         <label>Email</label>
                         <input type="email" name="email" value={form.email ?? ""} onChange={handleChange} />
                     </div>
-                    <button type="submit">Search</button>
-                </form>
+                </div>
+                <button onClick={onSearch}>Search</button>
+                <button onClick={() => reset()}>Reset</button>
             </Modal> */}
-
-            {/* <form onSubmit={submit}>
-                <div>
-                    <label>Name</label>
-                    <input type="text" name="name" value={form.name ?? ""} onChange={handleChange} />
-                </div>
-                <div>
-                    <label>Email</label>
-                    <input type="email" name="email" value={form.email ?? ""} onChange={handleChange} />
-                </div>
-                <button type="submit">Search</button>
-            </form> */}
 
             <span>{loading && 'Loading...'}</span>
 

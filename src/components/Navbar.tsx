@@ -25,7 +25,10 @@ export function Navbar() {
                         <NavLink to="users" className={( { isActive } ) => isActive ? "active" : '' }>Users</NavLink>
                     </li>
                     <li>
-                        <NavLink to="FilterExampleWithTable" className={( { isActive } ) => isActive ? "active" : '' }>Filter With Table</NavLink>
+                        <NavLink to="filterExampleWithTable" className={( { isActive } ) => isActive ? "active" : '' }>Filter With Table</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="react-hook-form" className={( { isActive } ) => isActive ? "active" : '' }>React Hook Form</NavLink>
                     </li>
                     <li>
                         <button className='logout' onClick={() => setOpen(true)}>Logout</button>
