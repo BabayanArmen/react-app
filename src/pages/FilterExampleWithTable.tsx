@@ -108,34 +108,36 @@ export function FilterExampleWithTable() {
             <span>{loading && 'Loading...'}</span>
 
             {(users && !loading) && (
-                <table>
-                    <thead>
-                        <tr>
-                            <td>id</td>
-                            <td>name</td>
-                            <td>username</td>
-                            <td>email</td>
-                            <td>phone</td>
-                            <td>website</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {users.map((user: any, index) => {
-                            return (
-                                <tr key={index}>
-                                    <td>{user.id}</td>
-                                    <td>{user.name}</td>
-                                    <td>{user.username}</td>
-                                    <td>{user.email}</td>
-                                    <td>{user.phone}</td>
-                                    <td>{user.website}</td>
-                                </tr>
-                            )
-                        })}
-                    </tbody>
-                </table>
+                <div className="table_container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>id</td>
+                                <td>name</td>
+                                <td>username</td>
+                                <td>email</td>
+                                <td>phone</td>
+                                <td>website</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {users.map((user: any, index) => {
+                                return (
+                                    <tr key={index}>
+                                        <td>{user.id}</td>
+                                        <td>{user.name}</td>
+                                        <td>{user.username}</td>
+                                        <td>{user.email}</td>
+                                        <td>{user.phone}</td>
+                                        <td>{user.website}</td>
+                                    </tr>
+                                )
+                            })}
+                        </tbody>
+                    </table>
+                </div>
             )}
         </>
     )
-
+    
 }
