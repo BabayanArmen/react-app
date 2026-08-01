@@ -21,6 +21,7 @@ nav {
       text-decoration: none;
       padding: 14px 16px;
       transition: background-color .2s ease, color .2s ease;
+      cursor: pointer;
       &.active {
           background-color: rgb(198, 198, 198);
           color: rgb(44, 44, 44);
@@ -54,8 +55,12 @@ nav a {
   box-sizing: border-box;
   a {
     color: white;
+    &.active {
+      color: rgb(87, 19, 159);
+    }
   }
 }
 .mobile_logout {
   margin-top: auto;
 }
+

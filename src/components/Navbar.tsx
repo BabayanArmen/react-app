@@ -25,6 +25,7 @@ export function Navbar() {
                         <NavLink to="users" end>Users</NavLink>
                         <NavLink to="filterExampleWithTable" end>Filter Example With Table</NavLink>
                         <NavLink to="react-hook-form" end>React-hook-form</NavLink>
+                        <NavLink to="react-hook-form-zod" end>React-hook-form-zod</NavLink>
                         <span className='logout' onClick={() => setOpen(true)}>Logout</span>
                     </>
                 )}
@@ -38,12 +39,13 @@ export function Navbar() {
 
             <Drawer open={drawerOpen} onClose={() => setDrawerOpen(false)}>
                 <div className='mobile_navbar'>
-                    <NavLink to="profile" className={( { isActive } ) => isActive ? "active" : '' } onClick={() => setDrawerOpen(false)}>Profile</NavLink>
-                    <NavLink to="notes" className={( { isActive } ) => isActive ? "active" : '' } onClick={() => setDrawerOpen(false)}>Notes</NavLink>
-                    <NavLink to="reducer" className={( { isActive } ) => isActive ? "active" : '' } onClick={() => setDrawerOpen(false)}>UseReducer</NavLink>
-                    <NavLink to="users" className={( { isActive } ) => isActive ? "active" : '' } onClick={() => setDrawerOpen(false)}>Users</NavLink>
-                    <NavLink to="filterExampleWithTable" className={( { isActive } ) => isActive ? "active" : '' } onClick={() => setDrawerOpen(false)}>Filter With Table</NavLink>
-                    <NavLink to="react-hook-form" className={( { isActive } ) => isActive ? "active" : '' } onClick={() => setDrawerOpen(false)}>React Hook Form</NavLink>
+                    <NavLink to="profile" onClick={() => setDrawerOpen(false)}>Profile</NavLink>
+                    <NavLink to="notes" onClick={() => setDrawerOpen(false)}>Notes</NavLink>
+                    <NavLink to="reducer" onClick={() => setDrawerOpen(false)}>UseReducer</NavLink>
+                    <NavLink to="users" onClick={() => setDrawerOpen(false)}>Users</NavLink>
+                    <NavLink to="filterExampleWithTable" onClick={() => setDrawerOpen(false)}>Filter With Table</NavLink>
+                    <NavLink to="react-hook-form" onClick={() => setDrawerOpen(false)}>React Hook Form</NavLink>
+                    <NavLink to="react-hook-form-zod" onClick={() => setDrawerOpen(false)}>React Hook Form with Zod</NavLink>
                     <button className='mobile_logout' onClick={() => setOpen(true)}>Logout</button>
                 </div>
             </Drawer>

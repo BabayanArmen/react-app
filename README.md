@@ -82,6 +82,8 @@ export default defineConfig([
 ## npm install @reduxjs/toolkit react-redux
 ## npm install @reduxjs/toolkit react-redux --template redux
 ## npm install react-hook-form
+## npm install @hookform/resolvers
+## npm install zod
 
 <!--
 //// DONE ////
@@ -113,6 +115,7 @@ useContext
 useReducer
 useParams() — read route parameters.
 useSearchParams() — read and update query string parameters.
+Custom hooks
  -->
 
 <!-- 
@@ -123,10 +126,9 @@ TanStack Query (React Query)
 Controlled inputs
 Uncontrolled inputs
 React Query
-Custom hooks
+
 Forms / Zod / Schema validation
 React rendering model
-
 
 useLocation()
 Container vs Presentational components
