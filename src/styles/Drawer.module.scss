@@ -6,10 +6,10 @@
     width: 320px;
     box-shadow: -2px 0 10px rgba(0,0,0,.2);
     transform: translateX(100%);
-    animation: slideIn .3s ease forwards;
+    animation: slideIn .3s ease-in-out forwards;
 }
 .drawer.close {
-    animation: slideOut .3s ease forwards;
+    animation: slideOut .3s ease-in-out forwards;
 }
 
 .drawer_overlay {
@@ -17,10 +17,10 @@
     inset: 0;
     // background-color: rgba(51, 51, 51, 0.226);
     background-color: #07171d9a;
-    animation: fadeIn .3s ease forwards;
+    animation: fadeIn .3s ease-in-out forwards;
 }
 .drawer_overlay.close {
-    animation: fadeOut .3s ease forwards;
+    animation: fadeOut .3s ease-in-out forwards;
 }
 
 @keyframes slideIn {
