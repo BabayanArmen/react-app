@@ -15,6 +15,7 @@ import './App.scss'
 // import { UseReduserExample } from './pages/UseReducerExample'
 import React, { useState } from 'react'
 import type { AppContextModel } from './models/app.context.model'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 //// this is for useContext
 export const AppContext = React.createContext<AppContextModel | null>(null);
@@ -41,34 +42,38 @@ function App() {
   //     console.log("Message from child:", message);
   // };
 
+  const queryClient = new QueryClient();
+
   return (
-    <AppContext.Provider value={{
-      message,
-      setMessage
-    }}>
-    {/* <Routes>
-      <Route path='/' element={<Login />}></Route>
-      <Route element={<ProtectedRoutes/>}>
-        <Route path='/home' element={<Home />}>
-          <Route index element={<Navigate to="profile" replace />}></Route>
-          <Route path='profile' element={<Profile {...userData} callback={handleCallback} />}></Route>
-          <Route path='notes' element={<Notes/>}></Route>
-          <Route path='reducer' element={<UseReduserExample/>}></Route>
+    <QueryClientProvider client={queryClient}>
+      <AppContext.Provider value={{
+        message,
+        setMessage
+      }}>
+      {/* <Routes>
+        <Route path='/' element={<Login />}></Route>
+        <Route element={<ProtectedRoutes/>}>
+          <Route path='/home' element={<Home />}>
+            <Route index element={<Navigate to="profile" replace />}></Route>
+            <Route path='profile' element={<Profile {...userData} callback={handleCallback} />}></Route>
+            <Route path='notes' element={<Notes/>}></Route>
+            <Route path='reducer' element={<UseReduserExample/>}></Route>
+          </Route>
         </Route>
-      </Route>
-      <Route path='/*' element={<NotFound />}></Route>
-    </Routes> */}
+        <Route path='/*' element={<NotFound />}></Route>
+      </Routes> */}
 
-      {/* this is for router loader, when fetching data before navigate */}
-      {/* {
-        navigation.state === "loading" &&
-        <div>
-            Loading...
-        </div>
-      } */}
+        {/* this is for router loader, when fetching data before navigate */}
+        {/* {
+          navigation.state === "loading" &&
+          <div>
+              Loading...
+          </div>
+        } */}
 
-      <Outlet />
-    </AppContext.Provider>
+        <Outlet />
+      </AppContext.Provider>
+    </QueryClientProvider>
   )
 }
 

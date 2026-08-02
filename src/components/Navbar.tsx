@@ -26,6 +26,7 @@ export function Navbar() {
                         <NavLink to="filterExampleWithTable" end>Filter Example With Table</NavLink>
                         <NavLink to="react-hook-form" end>React-hook-form</NavLink>
                         <NavLink to="react-hook-form-zod" end>React-hook-form-zod</NavLink>
+                        <NavLink to="react-query" end>React Query</NavLink>
                         <span className='logout' onClick={() => setOpen(true)}>Logout</span>
                     </>
                 )}
@@ -46,6 +47,7 @@ export function Navbar() {
                     <NavLink to="filterExampleWithTable" onClick={() => setDrawerOpen(false)}>Filter With Table</NavLink>
                     <NavLink to="react-hook-form" onClick={() => setDrawerOpen(false)}>React Hook Form</NavLink>
                     <NavLink to="react-hook-form-zod" onClick={() => setDrawerOpen(false)}>React Hook Form with Zod</NavLink>
+                    <NavLink to="react-query" onClick={() => setDrawerOpen(false)}>React Query</NavLink>
                     <button className='mobile_logout' onClick={() => setOpen(true)}>Logout</button>
                 </div>
             </Drawer>

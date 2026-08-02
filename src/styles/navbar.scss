@@ -55,6 +55,7 @@ nav a {
   box-sizing: border-box;
   a {
     color: white;
+    text-decoration: none;
     &.active {
       color: rgb(87, 19, 159);
     }
